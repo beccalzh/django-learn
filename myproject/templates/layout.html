@@ -18,14 +18,24 @@
             <span role="img" aria-label="Home">🏠</span>
         </a> |
         <a href="/about">
-            <span role="img" aria-label="About">😀</span>
+            <span role="img" aria-label="About" title="About">😀</span>
         </a> |
         <a href="{% url 'posts:list' %}">
-            <span role="img" aria-label="Posts">📰</span>
+            <span role="img" aria-label="Posts" title="Posts">📰</span>
         </a> | 
         <a href="{% url 'users:register' %}">
-            <span role="img" aria-label="User Registeration">🚀</span>
-        </a>
+            <span role="img" aria-label="User Registeration" title="User Registeration">🚀</span>
+        </a> | 
+        <a href="{% url 'users:login' %}">
+            <span role="img" aria-label="User Login" title="User Login">🔒</span>
+        </a> |
+        <a href="{% url 'posts:new-post' %}">
+            <span role="img" aria-label="New Post" title="New Post">📫</span>
+        </a> |
+        <form class="logout" action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="logout-button" aria-label="User Logout" title="User Logout">🚪</button>
+        </form>
     </nav>
     <main>
         {% block content %}
