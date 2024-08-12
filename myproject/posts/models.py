@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,6 +9,7 @@ class Post(models.Model):
     slug = models.SlugField()
     date = models.DateTimeField(auto_now_add=True)
     banner = models.ImageField(default='fallback.png', blank=True) # not required image
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None) # link to the user
 
     def __str__(self) -> str:
         return self.title
